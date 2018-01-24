@@ -1,19 +1,20 @@
-#define Name "Paragraph adapter"
-#define Version "0.1"
+#define Name "Paragraph Adapter"
+#define Version "0.2"
 #define Author "UlrichVonRekkenin"
 #define Site "https://github.com/UlrichVonRekkenin"
-#define BuildPath ".\build\exe.win32-3.4\"
+#define Release "https://github.com/UlrichVonRekkenin"
+#define BuildPath ".\build\exe.win-amd64-3.6\"
 #define ExeName "ParagraphAdapter.exe"
-#define InitName "init.xls"
+#define PythonVersion 36
 
 [Setup]
-AppId={{BEC6990F-2789-4B72-B1ED-056817A74F7A}
+AppId={{D6F3D1A3-AFC3-4D76-88EC-574A5B29B203}
 AppName={#Name}
 AppVersion={#Version}
 AppPublisher={#Author}
 AppPublisherURL={#Site}
 AppUpdatesURL={#Release}
-DefaultDirName={userdocs}\Paragraph Adapter
+DefaultDirName={userdocs}\{#Name}
 DefaultGroupName={#Name}
 OutputDir=setup
 OutputBaseFileName=Setup-{#Name}-{#Version}
@@ -22,21 +23,14 @@ SolidCompression=yes
 
 [Files]
 Source: "{#BuildPath}{#ExeName}"; DestDir: "{app}"; Flags: ignoreversion touch
-Source: "{#InitName}"; DestDir: "{app}"; Flags: ignoreversion touch
-Source: "_readme.md"; DestDir: "{app}"; Flags: ignoreversion touch
-Source: "{#BuildPath}cacert.pem"; DestDir: "{app}"; Flags: ignoreversion touch
-Source: "{#BuildPath}msvcp100.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#BuildPath}MSVCR100.dll"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#BuildPath}python34.dll"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#BuildPath}python{#PythonVersion}.dll"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#BuildPath}pyexpat.pyd"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#BuildPath}_socket.pyd"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#BuildPath}_ssl.pyd"; DestDir: "{app}"; Flags: ignoreversion
-Source: "{#BuildPath}library.zip"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#BuildPath}unicodedata.pyd"; DestDir: "{app}"; Flags: ignoreversion
 
 
 [UninstallDelete]
-Type: files; Name: "{app}\{#InitName}"
 
 
 [Icons]
